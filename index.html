@@ -713,7 +713,7 @@
         <div class="villa-booking-label mar">Reserve Casa del Mar</div>
         <div class="ldg-mar-wrap">
           <div
-            id="lodgify-book-now-box"
+            id="lodgify-book-now-box-mar"
             data-rental-id="806721"
             data-website-id="655689"
             data-slug="casa-del-mar-850d64"
@@ -745,6 +745,12 @@
             data-done-label='Done'
           ></div>
         </div>
+        <script>
+          (function() {
+            var el = document.getElementById('lodgify-book-now-box-mar');
+            if (el) el.id = 'lodgify-book-now-box';
+          })();
+        </script>
         <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js"></script>
       </div>
       <div class="villa-divider"></div>
