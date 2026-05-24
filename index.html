@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa del Mar &amp; Casa del Sol | Sifa, Oman</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
 <style>
   /* Casa del Mar widget — teal theme */
-  #ldg-mar {
+  .ldg-mar-wrap {
     --ldg-bnb-background: #ffffff;
     --ldg-bnb-border-radius: 0.42em;
     --ldg-bnb-box-shadow: none;
@@ -27,7 +26,7 @@
     width: 100%;
   }
   /* Casa del Sol widget — amber/gold theme */
-  #ldg-sol {
+  .ldg-sol-wrap {
     --ldg-bnb-background: #ffffff;
     --ldg-bnb-border-radius: 0.42em;
     --ldg-bnb-box-shadow: none;
@@ -712,38 +711,41 @@
       </div>
       <div class="villa-booking">
         <div class="villa-booking-label mar">Reserve Casa del Mar</div>
-        <div
-          id="ldg-mar"
-          data-rental-id="806721"
-          data-website-id="655689"
-          data-slug="casa-del-mar-850d64"
-          data-language-code="en"
-          data-new-tab="true"
-          data-version="stable"
-          data-has-guests-breakdown
-          data-check-in-label='Check-in'
-          data-check-out-label='Check-out'
-          data-guests-label='Guests'
-          data-guests-singular-label='{{NumberOfGuests}} guest'
-          data-guests-plural-label='{{NumberOfGuests}} guests'
-          data-total-price-label='Total price:'
-          data-select-dates-to-see-price-label='Select dates to see total price'
-          data-minimum-price-per-night-first-label='From'
-          data-minimum-price-per-night-second-label='per night'
-          data-book-button-label='Book Now'
-          data-guests-breakdown-label='Guests'
-          data-adults-label='{"one":"adult","other":"adults"}'
-          data-adults-description='Ages {minAge} or above'
-          data-children-label='{"one":"child","other":"children"}'
-          data-children-description='Ages {minAge}-{maxAge}'
-          data-children-not-allowed-label='Not suitable for children'
-          data-infants-label='{"one":"infant","other":"infants"}'
-          data-infants-description='Under {maxAge}'
-          data-infants-not-allowed-label='Not suitable for infants'
-          data-pets-label='{"one":"pet","other":"pets"}'
-          data-pets-not-allowed-label='Not allowed'
-          data-done-label='Done'
-        ></div>
+        <div class="ldg-mar-wrap">
+          <div
+            id="lodgify-book-now-box"
+            data-rental-id="806721"
+            data-website-id="655689"
+            data-slug="casa-del-mar-850d64"
+            data-language-code="en"
+            data-new-tab="true"
+            data-version="stable"
+            data-has-guests-breakdown
+            data-check-in-label='Check-in'
+            data-check-out-label='Check-out'
+            data-guests-label='Guests'
+            data-guests-singular-label='{{NumberOfGuests}} guest'
+            data-guests-plural-label='{{NumberOfGuests}} guests'
+            data-total-price-label='Total price:'
+            data-select-dates-to-see-price-label='Select dates to see total price'
+            data-minimum-price-per-night-first-label='From'
+            data-minimum-price-per-night-second-label='per night'
+            data-book-button-label='Book Now'
+            data-guests-breakdown-label='Guests'
+            data-adults-label='{"one":"adult","other":"adults"}'
+            data-adults-description='Ages {minAge} or above'
+            data-children-label='{"one":"child","other":"children"}'
+            data-children-description='Ages {minAge}-{maxAge}'
+            data-children-not-allowed-label='Not suitable for children'
+            data-infants-label='{"one":"infant","other":"infants"}'
+            data-infants-description='Under {maxAge}'
+            data-infants-not-allowed-label='Not suitable for infants'
+            data-pets-label='{"one":"pet","other":"pets"}'
+            data-pets-not-allowed-label='Not allowed'
+            data-done-label='Done'
+          ></div>
+        </div>
+        <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js"></script>
       </div>
       <div class="villa-divider"></div>
     </div>
@@ -770,38 +772,47 @@
       </div>
       <div class="villa-booking" style="background:var(--sol-light);">
         <div class="villa-booking-label sol">Reserve Casa del Sol</div>
-        <div
-          id="ldg-sol"
-          data-rental-id="806720"
-          data-website-id="655689"
-          data-slug="casa-del-mar-850d64"
-          data-language-code="en"
-          data-new-tab="true"
-          data-version="stable"
-          data-has-guests-breakdown
-          data-check-in-label='Check-in'
-          data-check-out-label='Check-out'
-          data-guests-label='Guests'
-          data-guests-singular-label='{{NumberOfGuests}} guest'
-          data-guests-plural-label='{{NumberOfGuests}} guests'
-          data-total-price-label='Total price:'
-          data-select-dates-to-see-price-label='Select dates to see total price'
-          data-minimum-price-per-night-first-label='From'
-          data-minimum-price-per-night-second-label='per night'
-          data-book-button-label='Book Now'
-          data-guests-breakdown-label='Guests'
-          data-adults-label='{"one":"adult","other":"adults"}'
-          data-adults-description='Ages {minAge} or above'
-          data-children-label='{"one":"child","other":"children"}'
-          data-children-description='Ages {minAge}-{maxAge}'
-          data-children-not-allowed-label='Not suitable for children'
-          data-infants-label='{"one":"infant","other":"infants"}'
-          data-infants-description='Under {maxAge}'
-          data-infants-not-allowed-label='Not suitable for infants'
-          data-pets-label='{"one":"pet","other":"pets"}'
-          data-pets-not-allowed-label='Not allowed'
-          data-done-label='Done'
-        ></div>
+        <div class="ldg-sol-wrap">
+          <div
+            id="lodgify-book-now-box-sol"
+            data-rental-id="806720"
+            data-website-id="655689"
+            data-slug="casa-del-mar-850d64"
+            data-language-code="en"
+            data-new-tab="true"
+            data-version="stable"
+            data-has-guests-breakdown
+            data-check-in-label='Check-in'
+            data-check-out-label='Check-out'
+            data-guests-label='Guests'
+            data-guests-singular-label='{{NumberOfGuests}} guest'
+            data-guests-plural-label='{{NumberOfGuests}} guests'
+            data-total-price-label='Total price:'
+            data-select-dates-to-see-price-label='Select dates to see total price'
+            data-minimum-price-per-night-first-label='From'
+            data-minimum-price-per-night-second-label='per night'
+            data-book-button-label='Book Now'
+            data-guests-breakdown-label='Guests'
+            data-adults-label='{"one":"adult","other":"adults"}'
+            data-adults-description='Ages {minAge} or above'
+            data-children-label='{"one":"child","other":"children"}'
+            data-children-description='Ages {minAge}-{maxAge}'
+            data-children-not-allowed-label='Not suitable for children'
+            data-infants-label='{"one":"infant","other":"infants"}'
+            data-infants-description='Under {maxAge}'
+            data-infants-not-allowed-label='Not suitable for infants'
+            data-pets-label='{"one":"pet","other":"pets"}'
+            data-pets-not-allowed-label='Not allowed'
+            data-done-label='Done'
+          ></div>
+        </div>
+        <script>
+          (function() {
+            var el = document.getElementById('lodgify-book-now-box-sol');
+            if (el) el.id = 'lodgify-book-now-box';
+          })();
+        </script>
+        <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js"></script>
       </div>
     </div>
   </div>
