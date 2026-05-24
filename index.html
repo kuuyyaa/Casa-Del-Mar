@@ -599,28 +599,88 @@
 
   /* ── MOBILE ── */
   @media (max-width: 960px) {
+    /* Nav */
     nav, nav.scrolled { padding: 1.1rem 1.5rem; }
     .nav-links { display: none; }
-    #about, .book-layout, .location-layout { grid-template-columns: 1fr; gap: 3rem; }
-    #features, #villas, #gallery, #amenities, #rules, #location, footer { padding: 5rem 1.5rem; }
-    #features { padding: 2rem 1.5rem; }
-    .hero-content { padding: 0 1.5rem; }
-    .hero-badges { right: 1.5rem; bottom: 2rem; flex-direction: column; }
+    .nav-ctas { display: none; }
+
+    /* Hero */
+    #hero { align-items: flex-end; padding-bottom: 3rem; min-height: 100svh; }
+    .hero-content { padding: 0 1.5rem; max-width: 100%; }
+    .hero-title { font-size: clamp(2.4rem, 9vw, 3.5rem); }
+    .hero-sub { font-size: 0.88rem; max-width: 100%; }
+    .hero-ctas { flex-direction: column; gap: 0.8rem; }
+    .hero-ctas a { width: 100%; justify-content: center; }
+    .hero-badges { display: none; }
+    .hero-bg::after {
+      background: linear-gradient(to bottom, rgba(250,247,242,0.2) 0%, rgba(250,247,242,0.96) 55%, rgba(250,247,242,1) 100%);
+    }
+
+    /* Features strip */
+    #features {
+      padding: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .feature-item {
+      flex: 1 1 40%;
+      min-width: 140px;
+      padding: 0;
+      border-right: none;
+    }
+
+    /* Sections padding */
+    #villas, #gallery, #amenities, #pool, #location, #rules, footer { padding: 4rem 1.5rem; }
+
+    /* Villas */
     .villa-cards { grid-template-columns: 1fr; }
     .villa-divider { display: none; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+    .villa-img-wrap { height: 260px !important; }
+    .villa-body { padding: 1.5rem; }
+    .villa-booking { padding: 1.5rem; }
+
+    /* Gallery */
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 180px);
+    }
     .g1 { grid-column: span 2; grid-row: span 1; }
     .g2,.g3,.g4,.g5 { grid-column: span 1; }
-    .amenities-grid { grid-template-columns: 1fr 1fr; }
-    .rules-grid { grid-template-columns: 1fr 1fr; }
-    .pool-content { padding: 0 1.5rem; max-width: 100%; }
+
+    /* Amenities */
+    .amenities-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .amenity-card { padding: 1.4rem 1.2rem; }
+
+    /* Pool */
+    #pool { height: auto; padding: 0; align-items: flex-end; min-height: 420px; }
+    .pool-bg { position: absolute; }
     .pool-bg::after {
-      background: linear-gradient(to bottom, rgba(250,247,242,0) 30%, rgba(250,247,242,0.97) 70%);
+      background: linear-gradient(to bottom, rgba(250,247,242,0) 20%, rgba(250,247,242,0.97) 65%, rgba(250,247,242,1) 100%);
     }
-    #pool { height: auto; padding: 4rem 0 0; align-items: flex-end; }
-    .pool-content { padding: 3rem 1.5rem; max-width: 100%; }
+    .pool-content { padding: 3rem 1.5rem; max-width: 100%; margin-left: 0; }
+    .pool-tags { flex-wrap: wrap; }
+
+    /* Location */
+    .location-layout { grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+    .map-frame { height: 260px; }
+
+    /* Rules */
+    .rules-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .rule-card { padding: 1.4rem; }
+
+    /* Footer */
+    footer { padding: 3rem 1.5rem 2rem; }
     .footer-top { flex-direction: column; gap: 2rem; }
-    .footer-links { flex-wrap: wrap; gap: 1.2rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .amenities-grid { grid-template-columns: 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 180px); }
+    .g1,.g2,.g3,.g4,.g5 { grid-column: span 1; grid-row: span 1; }
+    .hero-title { font-size: 2.4rem; }
   }
 </style>
 </head>
