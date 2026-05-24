@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa del Mar &amp; Casa del Sol | Sifa, Oman</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:       #faf7f2;
+    --linen:       #f2ede3;
+    --sand:        #e8dcc8;
+    --sand-dark:   #c9b89a;
+    --teal:        #2aacb8;
+    --teal-light:  #e0f5f7;
+    --teal-deep:   #1a8a94;
+    --sol:         #e8a430;
+    --sol-light:   #fdf3e0;
+    --mar:         #2aacb8;
+    --mar-light:   #e0f5f7;
+    --text:        #1c2b2d;
+    --text-mid:    #4a6165;
+    --text-muted:  #8aa4a8;
+    --white:       #ffffff;
+    --border:      rgba(42,172,184,0.18);
+    --border-sand: rgba(201,184,154,0.38);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.8rem 5rem;
+    background: rgba(250,247,242,0.55);
+    backdrop-filter: blur(8px);
+    transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+  }
+  .img-placeholder {
+    width: 100%; height: 100%;
+    background-color: #ddf0f2;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(42,172,184,0.12) 0px,
+      rgba(42,172,184,0.12) 10px,
+      transparent 10px,
+      transparent 24px
+    );
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--teal-deep);
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: inherit;
+  }
+  .img-placeholder span { font-size: 1.6rem; }
+  nav.scrolled {
+    background: rgba(250,247,242,0.96);
+    backdrop-filter: blur(14px);
+    padding: 1rem 5rem;
+    box-shadow: 0 1px 0 var(--border-sand);
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; line-height: 1;
+    text-decoration: none;
+  }
+  .nav-logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400;
+    letter-spacing: 0.14em; color: var(--text);
+  }
+  .nav-logo-sub {
+    font-size: 0.6rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-mid); text-decoration: none;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-book {
+    background: var(--teal); color: var(--white);
+    padding: 0.65rem 1.8rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.73rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500; border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-book:hover { background: var(--teal-deep); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; height: 100vh; min-height: 640px;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-color: #ddf0f2;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(42,172,184,0.10) 0px,
+      rgba(42,172,184,0.10) 10px,
+      transparent 10px,
+      transparent 24px
+    );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(250,247,242,0.92) 36%, rgba(250,247,242,0.3) 72%, rgba(250,247,242,0.05) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 5rem; max-width: 640px;
+    animation: fadeUp 1s ease-out 0.2s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1.4rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--teal);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    font-weight: 300; line-height: 1.1; color: var(--text); margin-bottom: 0.6rem;
+  }
+  .hero-title em { font-style: italic; color: var(--teal); }
+  .hero-title .sol { font-style: italic; color: var(--sol); }
+  .hero-divider {
+    width: 40px; height: 1px;
+    background: linear-gradient(to right, var(--teal), var(--sol));
+    margin: 1.4rem 0;
+  }
+  .hero-sub {
+    font-size: 0.95rem; color: var(--text-mid);
+    line-height: 1.8; margin-bottom: 2.5rem; max-width: 440px;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal); color: var(--white);
+    padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--teal-deep); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--text);
+    padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 400; text-decoration: none; border-radius: 2px;
+    border: 1px solid var(--border-sand);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  .hero-badges {
+    position: absolute; bottom: 3.5rem; right: 5rem;
+    display: flex; gap: 0.8rem; z-index: 2;
+    animation: fadeUp 1s ease-out 0.7s both;
+  }
+  .badge-pill {
+    background: var(--white); border: 1px solid var(--border-sand);
+    border-radius: 40px; padding: 0.55rem 1.1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.72rem; color: var(--text-mid);
+    box-shadow: 0 4px 16px rgba(28,43,45,0.07);
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .badge-dot.teal { background: var(--teal); }
+  .badge-dot.sol  { background: var(--sol); }
+
+  /* ── FEATURES STRIP ── */
+  #features {
+    background: var(--teal-light);
+    padding: 2.5rem 5rem;
+    display: flex; gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .feature-item {
+    flex: 1; min-width: 150px;
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0 2rem;
+    border-right: 1px solid var(--border);
+  }
+  .feature-item:first-child { padding-left: 0; }
+  .feature-item:last-child { border-right: none; }
+  .feature-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .feature-name { font-size: 0.8rem; font-weight: 500; color: var(--text); margin-bottom: 0.1rem; }
+  .feature-desc { font-size: 0.7rem; color: var(--text-muted); }
+
+  /* ── VILLAS SECTION ── */
+  #villas {
+    background: var(--white);
+    padding: 9rem 5rem;
+  }
+  .villas-intro {
+    text-align: center; max-width: 580px; margin: 0 auto 5rem;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1.2rem;
+  }
+  .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--teal); }
+  .eyebrow.sol-eye { color: var(--sol); }
+  .eyebrow.sol-eye::before { background: var(--sol); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300;
+    line-height: 1.15; color: var(--text); margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+  .section-title .sol { font-style: italic; color: var(--sol); }
+  .body-text {
+    font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem;
+  }
+
+  /* Villa cards side by side */
+  .villa-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    border: 1px solid var(--border-sand); border-radius: 6px;
+    overflow: hidden;
+  }
+  .villa-card { position: relative; }
+  .villa-img {
+    width: 100%; height: 420px; object-fit: cover;
+    display: block; transition: transform 0.7s ease;
+  }
+  .villa-card:hover .villa-img { transform: scale(1.03); }
+  .villa-img-wrap { overflow: hidden; }
+  .villa-body {
+    padding: 2.5rem;
+    border-top: 1px solid var(--border-sand);
+  }
+  .villa-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border-radius: 40px; padding: 0.3rem 1rem;
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .villa-tag.mar { background: var(--mar-light); color: var(--teal-deep); border: 1px solid var(--border); }
+  .villa-tag.sol { background: var(--sol-light); color: #9a6300; border: 1px solid rgba(232,164,48,0.25); }
+  .villa-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+  .villa-name.mar { color: var(--teal-deep); }
+  .villa-name.sol { color: #9a6300; }
+  .villa-subtitle {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 1.2rem;
+  }
+  .villa-desc {
+    font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .villa-features {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;
+  }
+  .vf-tag {
+    background: var(--cream); border: 1px solid var(--border-sand);
+    border-radius: 40px; padding: 0.3rem 0.8rem;
+    font-size: 0.68rem; color: var(--text-mid);
+  }
+  .villa-divider {
+    width: 1px; background: var(--border-sand);
+    position: absolute; top: 0; bottom: 0; right: 0;
+  }
+
+  /* ── GALLERY ── */
+  #gallery {
+    background: var(--cream); padding: 8rem 5rem;
+  }
+  .gallery-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .gallery-link {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 300px 220px;
+    gap: 10px;
+  }
+  .gi { overflow: hidden; border-radius: 4px; }
+  .gi img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .gi:hover img { transform: scale(1.05); }
+  .g1 { grid-column: span 5; grid-row: span 2; }
+  .g2 { grid-column: span 4; }
+  .g3 { grid-column: span 3; }
+  .g4 { grid-column: span 3; }
+  .g5 { grid-column: span 4; }
+
+  /* ── AMENITIES ── */
+  #amenities { background: var(--white); padding: 8rem 5rem; }
+  .amenities-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .amenity-card {
+    background: var(--cream); border: 1px solid var(--border-sand);
+    border-radius: 4px; padding: 2rem 1.6rem;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .amenity-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 8px 28px rgba(42,172,184,0.1);
+    transform: translateY(-3px);
+  }
+  .amenity-icon { font-size: 1.5rem; margin-bottom: 0.9rem; }
+  .amenity-name { font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+  .amenity-desc { font-size: 0.73rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── POOL MOMENT ── */
+  #pool {
+    position: relative; height: 520px; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .pool-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(250,247,242,0) 35%, rgba(250,247,242,0.96) 68%, rgba(250,247,242,1) 100%),
+      url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&q=85') center/cover no-repeat;
+  }
+  .pool-content {
+    position: relative; z-index: 2;
+    margin-left: auto; max-width: 420px; padding: 0 5rem;
+  }
+  .pool-content .section-title { margin-bottom: 1rem; }
+  .pool-content .body-text { margin-bottom: 1.5rem; }
+  .pool-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pool-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--teal-light); color: var(--teal-deep);
+    border: 1px solid var(--border); border-radius: 40px;
+    padding: 0.4rem 0.9rem; font-size: 0.7rem; letter-spacing: 0.06em;
+  }
+
+  /* ── BOOKING ── */
+  #book { background: var(--linen); padding: 8rem 5rem; }
+  .book-layout {
+    display: grid; grid-template-columns: 1fr 1.45fr; gap: 6rem;
+    align-items: start; margin-top: 3rem;
+  }
+  .book-info .body-text { margin-bottom: 1rem; }
+  .price-display {
+    background: var(--white); border: 1px solid var(--border-sand);
+    border-radius: 4px; padding: 1.5rem 1.8rem;
+    margin: 1.8rem 0; display: flex; align-items: baseline; gap: 0.5rem;
+  }
+  .price-from { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-right: 0.2rem; }
+  .price-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem; font-weight: 400; color: var(--teal); line-height: 1;
+  }
+  .price-unit { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .bank-note {
+    background: var(--teal-light); border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0; padding: 1.2rem 1.4rem;
+    font-size: 0.8rem; color: var(--teal-deep); line-height: 1.75; margin-bottom: 1.5rem;
+  }
+  .bank-note strong { display: block; margin-bottom: 0.3rem; font-weight: 500; }
+  .whatsapp-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+    width: 100%; background: #25D366; color: var(--white);
+    padding: 0.85rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    transition: background 0.2s; margin-top: 0.9rem;
+  }
+  .whatsapp-btn:hover { background: #128C7E; }
+
+  .lodgify-container {
+    background: var(--white); border: 1px solid var(--border-sand);
+    border-radius: 4px; padding: 2.5rem;
+    box-shadow: 0 8px 40px rgba(28,43,45,0.07);
+  }
+  .lodgify-header {
+    margin-bottom: 1.8rem; padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border-sand);
+  }
+  .lodgify-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--text); margin-bottom: 0.3rem;
+  }
+  .lodgify-sub { font-size: 0.76rem; color: var(--text-muted); }
+  .widget-placeholder {
+    background: var(--cream); border: 1px dashed var(--border-sand);
+    border-radius: 4px; padding: 3rem 2rem; text-align: center;
+    color: var(--text-muted); font-size: 0.8rem; line-height: 1.8;
+  }
+  .widget-placeholder strong { display: block; color: var(--teal); font-size: 0.86rem; margin-bottom: 0.4rem; }
+
+  /* ── LOCATION ── */
+  #location { background: var(--white); padding: 8rem 5rem; }
+  .location-layout {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem;
+    align-items: center; margin-top: 3rem;
+  }
+  .map-frame { height: 420px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-sand); }
+  .map-frame iframe { width: 100%; height: 100%; border: none; }
+  .location-details .body-text { margin-bottom: 1rem; }
+  .location-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
+  .loc-tag {
+    background: var(--teal-light); color: var(--teal-deep);
+    border: 1px solid var(--border); border-radius: 40px;
+    padding: 0.4rem 1rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* ── RULES ── */
+  #rules { background: var(--cream); padding: 8rem 5rem; }
+  .rules-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .rule-card {
+    background: var(--white); border: 1px solid var(--border-sand);
+    border-radius: 4px; padding: 2rem;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .rule-card:hover { border-color: var(--teal); }
+  .rule-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .rule-title { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .rule-val { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 0.2rem; }
+  .rule-note { font-size: 0.73rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--text); color: var(--cream); padding: 4rem 5rem 2.5rem; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 3rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(250,247,242,0.1);
+  }
+  .footer-logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; letter-spacing: 0.14em; margin-bottom: 0.4rem;
+  }
+  .footer-logo-main .mar { color: var(--teal); }
+  .footer-logo-main .sol { color: var(--sol); }
+  .footer-tagline { font-size: 0.7rem; color: rgba(250,247,242,0.4); letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 2.5rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(250,247,242,0.45); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.68rem; color: rgba(250,247,242,0.28); }
+  .footer-credit { font-size: 0.68rem; color: rgba(250,247,242,0.22); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 960px) {
+    nav, nav.scrolled { padding: 1.1rem 1.5rem; }
+    .nav-links { display: none; }
+    #about, .book-layout, .location-layout { grid-template-columns: 1fr; gap: 3rem; }
+    #features, #villas, #gallery, #amenities, #rules, #book, #location, footer { padding: 5rem 1.5rem; }
+    #features { padding: 2rem 1.5rem; }
+    .hero-content { padding: 0 1.5rem; }
+    .hero-badges { right: 1.5rem; bottom: 2rem; flex-direction: column; }
+    .villa-cards { grid-template-columns: 1fr; }
+    .villa-divider { display: none; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+    .g1 { grid-column: span 2; grid-row: span 1; }
+    .g2,.g3,.g4,.g5 { grid-column: span 1; }
+    .amenities-grid { grid-template-columns: 1fr 1fr; }
+    .rules-grid { grid-template-columns: 1fr 1fr; }
+    .pool-content { padding: 0 1.5rem; max-width: 100%; }
+    .pool-bg {
+      background:
+        linear-gradient(to bottom, rgba(250,247,242,0) 30%, rgba(250,247,242,0.97) 70%),
+        url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80') center/cover no-repeat;
+    }
+    #pool { height: auto; padding: 4rem 0 0; align-items: flex-end; }
+    .pool-content { padding: 3rem 1.5rem; max-width: 100%; }
+    .footer-top { flex-direction: column; gap: 2rem; }
+    .footer-links { flex-wrap: wrap; gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-main">Casa del Mar &amp; Casa del Sol</span>
+    <span class="nav-logo-sub">Sifa · Sultanate of Oman</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#villas">The Villas</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <a class="nav-book" href="#book">Reserve Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Sifa, Sultanate of Oman</p>
+    <h1 class="hero-title">
+      Casa del <em>Mar</em><br>
+      Casa del <span class="sol">Sol</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Two private villas on the white sand shores of Sifa. One faces the sea at dawn. The other catches the last light of the day. Both available to you.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#book">
+        Check Availability
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a class="btn-ghost" href="#villas">Discover the Villas</a>
+    </div>
+  </div>
+  <div class="hero-badges">
+    <div class="badge-pill"><div class="badge-dot teal"></div>Casa del Mar</div>
+    <div class="badge-pill"><div class="badge-dot sol"></div>Casa del Sol</div>
+    <div class="badge-pill"><div class="badge-dot teal"></div>Private Pool</div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div id="features">
+  <div class="feature-item">
+    <div class="feature-icon">🏊</div>
+    <div><div class="feature-name">Private Pool</div><div class="feature-desc">Exclusive to guests</div></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🏖️</div>
+    <div><div class="feature-name">White Sand Beach</div><div class="feature-desc">Direct access</div></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🏠</div>
+    <div><div class="feature-name">Two Villas</div><div class="feature-desc">Book one or both</div></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🌅</div>
+    <div><div class="feature-name">Ocean Views</div><div class="feature-desc">From every room</div></div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">📍</div>
+    <div><div class="feature-name">45 min from Muscat</div><div class="feature-desc">Coastal highway</div></div>
+  </div>
+</div>
+
+<!-- VILLAS -->
+<section id="villas">
+  <div class="villas-intro">
+    <p class="eyebrow">The Villas</p>
+    <h2 class="section-title">Two villas.<br>Two <em>stories</em>.</h2>
+    <p class="body-text">Side by side on Sifa's shoreline, Casa del Mar and Casa del Sol share the same private beach and pool. Each has its own distinct character. Choose the one that speaks to you.</p>
+  </div>
+
+  <div class="villa-cards">
+    <!-- CASA DEL MAR -->
+    <div class="villa-card">
+      <div class="villa-img-wrap" style="height:420px;">
+        <div class="img-placeholder"><span>🌊</span>Casa del Mar photo</div>
+      </div>
+      <div class="villa-body">
+        <span class="villa-tag mar">🌊 Casa del Mar</span>
+        <div class="villa-name mar">Casa del Mar</div>
+        <div class="villa-subtitle">House of the Sea</div>
+        <p class="villa-desc">
+          Casa del Mar faces the water head-on. Built for those who want to wake up with the sea already in view. The kind of morning where you open the doors and the sound of waves fills the room before your coffee does. Cool blues, natural stone, and a terrace that feels like it's floating above the beach. This villa is for the ones who came for the ocean.
+        </p>
+        <div class="villa-features">
+          <span class="vf-tag">2 bedrooms</span>
+          <span class="vf-tag">Sea-facing terrace</span>
+          <span class="vf-tag">4 guests max</span>
+          <span class="vf-tag">En-suite bathrooms</span>
+          <span class="vf-tag">Full kitchen</span>
+        </div>
+        <a class="btn-primary" href="#book" style="width:100%;justify-content:center;">Reserve Casa del Mar</a>
+      </div>
+      <div class="villa-divider"></div>
+    </div>
+
+    <!-- CASA DEL SOL -->
+    <div class="villa-card">
+      <div class="villa-img-wrap" style="height:420px;">
+        <div class="img-placeholder" style="background-color:#fdf3e0;background-image:repeating-linear-gradient(-45deg,rgba(232,164,48,0.13) 0px,rgba(232,164,48,0.13) 10px,transparent 10px,transparent 24px);color:#9a6300;"><span>☀️</span>Casa del Sol photo</div>
+      </div>
+      <div class="villa-body">
+        <span class="villa-tag sol">☀️ Casa del Sol</span>
+        <div class="villa-name sol">Casa del Sol</div>
+        <div class="villa-subtitle">House of the Sun</div>
+        <p class="villa-desc">
+          Casa del Sol is bathed in afternoon light. Warm tones, open-air living, and a south-facing terrace that catches the sun from noon until it drops into the sea. The pool feels different here: golden hour turns the water amber. This villa is for the ones who stay outside until dark. For gatherings around the BBQ, long evenings, and the kind of sunset that makes you want to come back.
+        </p>
+        <div class="villa-features">
+          <span class="vf-tag">2 bedrooms</span>
+          <span class="vf-tag">Sun terrace</span>
+          <span class="vf-tag">4 guests max</span>
+          <span class="vf-tag">En-suite bathrooms</span>
+          <span class="vf-tag">Full kitchen</span>
+        </div>
+        <a class="btn-primary" href="#book" style="width:100%;justify-content:center;background:var(--sol);">Reserve Casa del Sol</a>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div>
+      <p class="eyebrow">Gallery</p>
+      <h2 class="section-title">Sifa through<br><em>the seasons</em></h2>
+    </div>
+    <a class="gallery-link" href="#book">Reserve your stay →</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gi g1"><div class="img-placeholder"><span>🏖️</span>Beach view</div></div>
+    <div class="gi g2"><div class="img-placeholder"><span>🏊</span>Pool terrace</div></div>
+    <div class="gi g3"><div class="img-placeholder"><span>🌅</span>Sunset</div></div>
+    <div class="gi g4"><div class="img-placeholder"><span>🛏️</span>Bedroom</div></div>
+    <div class="gi g5"><div class="img-placeholder"><span>🌊</span>Sunrise</div></div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <p class="eyebrow">Amenities</p>
+  <h2 class="section-title">Included in<br><em>every stay</em></h2>
+  <p class="body-text" style="max-width:520px;margin-top:0.5rem;">Both villas share the private pool and beach access. Each comes fully equipped, with nothing to bring except yourself.</p>
+  <div class="amenities-grid">
+    <div class="amenity-card"><div class="amenity-icon">🏊</div><div class="amenity-name">Private Pool</div><div class="amenity-desc">Shared between both villas, exclusive to guests. No hotel, no strangers.</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🏖️</div><div class="amenity-name">Private Beach</div><div class="amenity-desc">Step directly onto white sand. Turquoise water. Yours for the stay.</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🛏️</div><div class="amenity-name">2 Bedrooms</div><div class="amenity-desc">Spacious, well-furnished rooms with premium linen and en-suite bathrooms</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🍳</div><div class="amenity-name">Full Kitchen</div><div class="amenity-desc">Cook your catch, order in, or fire up the BBQ. The choice is yours.</div></div>
+    <div class="amenity-card"><div class="amenity-icon">❄️</div><div class="amenity-name">Central AC</div><div class="amenity-desc">Powerful, quiet cooling across all rooms</div></div>
+    <div class="amenity-card"><div class="amenity-icon">📶</div><div class="amenity-name">High-Speed Wi-Fi</div><div class="amenity-desc">Stay connected, or leave the phone inside</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🔥</div><div class="amenity-name">BBQ Terrace</div><div class="amenity-desc">Beachfront BBQ setup with outdoor seating for long evenings</div></div>
+    <div class="amenity-card"><div class="amenity-icon">🅿️</div><div class="amenity-name">Private Parking</div><div class="amenity-desc">Gated and secure, up to 4 vehicles</div></div>
+  </div>
+</section>
+
+<!-- POOL MOMENT -->
+<section id="pool">
+  <div class="pool-bg"></div>
+  <div class="pool-content">
+    <p class="eyebrow">The Pool</p>
+    <h2 class="section-title">Float between<br>the pool<br>and <em>the sea</em>.</h2>
+    <p class="body-text">There's no schedule here. The pool is yours from arrival to checkout, and the beach is ten steps beyond it.</p>
+    <div class="pool-tags">
+      <span class="pool-tag">🏊 Private pool</span>
+      <span class="pool-tag">🌊 Beachfront</span>
+      <span class="pool-tag">☀️ All day sun</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <p class="eyebrow">Reservations</p>
+  <h2 class="section-title">Reserve your<br><em>villa directly</em></h2>
+  <div class="book-layout">
+    <div class="book-info">
+      <p class="body-text">Reserve Casa del Mar or Casa del Sol directly through this page. Select your dates in the booking widget and follow the steps to confirm your stay.</p>
+      <p class="body-text">You'll receive payment details by email after booking. Your dates are held for 48 hours while you complete payment.</p>
+      <p class="body-text" style="margin-top:1.2rem;">Multiple payment methods are accepted, including bank transfers.</p>
+      <a class="whatsapp-btn" href="https://wa.me/96812345678?text=Hi%2C%20I'd%20like%20to%20enquire%20about%20Casa%20del%20Mar%20or%20Casa%20del%20Sol%20in%20Sifa" target="_blank" style="margin-top:1.8rem;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enquire via WhatsApp
+      </a>
+    </div>
+
+    <div class="lodgify-container">
+      <div class="lodgify-header">
+        <div class="lodgify-title">Select your villa &amp; dates</div>
+        <div class="lodgify-sub">Live availability, synced with Airbnb &amp; Booking.com</div>
+      </div>
+      <!--
+        ══════════════════════════════════════════════
+        PASTE YOUR LODGIFY WIDGET CODE HERE
+        ══════════════════════════════════════════════
+        Lodgify → Website → Booking Widget → Copy Code
+        Replace the .widget-placeholder div below.
+        ══════════════════════════════════════════════
+      -->
+      <div class="widget-placeholder">
+        <strong>Lodgify Booking Widget</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <p class="eyebrow">Getting Here</p>
+  <h2 class="section-title">Sifa, <em>Oman</em></h2>
+  <div class="location-layout">
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57946.01!2d58.2!3d23.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8de04b43a3bed5%3A0x7be11d2ee14a0ad1!2sSifa%2C%20Oman!5e0!3m2!1sen!2som!4v1"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sifa location map">
+      </iframe>
+    </div>
+    <div class="location-details">
+      <p class="body-text">Sifa sits on the Al Batinah South coast, roughly 45 minutes from Muscat along the scenic coastal highway. The drive passes through dramatic cliffs and hidden coves. It's part of the experience.</p>
+      <p class="body-text">Both villas are accessible by car. Full address and GPS coordinates are included with your booking confirmation.</p>
+      <div class="location-tags">
+        <span class="loc-tag">45 min from Muscat</span>
+        <span class="loc-tag">Beachfront</span>
+        <span class="loc-tag">Coastal highway</span>
+        <span class="loc-tag">Al Batinah South</span>
+        <span class="loc-tag">Private road access</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSE RULES -->
+<section id="rules">
+  <p class="eyebrow">House Rules</p>
+  <h2 class="section-title">Good to <em>know</em></h2>
+  <div class="rules-grid">
+    <div class="rule-card"><div class="rule-icon">🕒</div><div><div class="rule-title">Check-in</div><div class="rule-val">From 3:00 PM</div><div class="rule-note">Early check-in on request, subject to availability</div></div></div>
+    <div class="rule-card"><div class="rule-icon">🕙</div><div><div class="rule-title">Check-out</div><div class="rule-val">By 11:00 AM</div><div class="rule-note">Late check-out may be arranged in advance</div></div></div>
+    <div class="rule-card"><div class="rule-icon">🌙</div><div><div class="rule-title">Minimum Stay</div><div class="rule-val">2 Nights</div><div class="rule-note">Weekend bookings preferred</div></div></div>
+    <div class="rule-card"><div class="rule-icon">🚭</div><div><div class="rule-title">Smoking</div><div class="rule-val">Outdoors only</div><div class="rule-note">Designated terrace areas available</div></div></div>
+    <div class="rule-card"><div class="rule-icon">🐾</div><div><div class="rule-title">Pets</div><div class="rule-val">On request</div><div class="rule-note">Please contact us before bringing animals</div></div></div>
+    <div class="rule-card"><div class="rule-icon">💳</div><div><div class="rule-title">Security Deposit</div><div class="rule-val">OMR 50</div><div class="rule-note">Refundable within 3 days of checkout</div></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo-main">Casa del <span class="mar">Mar</span> &amp; Casa del <span class="sol">Sol</span></div>
+      <div class="footer-tagline">Private villas · Sifa, Sultanate of Oman</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#villas">The Villas</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="https://wa.me/96812345678" target="_blank">WhatsApp</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Casa del Mar &amp; Casa del Sol. All rights reserved.</div>
+    <div class="footer-credit">CR 1644878</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>
