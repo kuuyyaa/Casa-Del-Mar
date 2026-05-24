@@ -503,6 +503,18 @@
   }
   .villa-booking-label.mar { color: var(--teal-deep); }
   .villa-booking-label.sol { color: #9a6300; }
+  .btn-availability {
+    width: 100%; padding: 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    border-radius: 2px; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-availability-mar { background: var(--teal); color: var(--white); }
+  .btn-availability-mar:hover { background: var(--teal-deep); transform: translateY(-1px); }
+  .btn-availability-sol { background: var(--sol); color: var(--white); }
+  .btn-availability-sol:hover { background: #c98820; transform: translateY(-1px); }
 
   /* ── LOCATION ── */
   #location { background: var(--white); padding: 8rem 5rem; }
@@ -711,9 +723,13 @@
       </div>
       <div class="villa-booking">
         <div class="villa-booking-label mar">Reserve Casa del Mar</div>
-        <div class="ldg-mar-wrap">
+        <div class="ldg-mar-wrap" id="mar-widget-wrap" style="display:none;">
           <iframe id="iframe-mar" scrolling="no" style="width:100%;border:none;display:block;" src="data:text/html;charset=utf-8,<!DOCTYPE html><html><head><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:inherit;background:transparent;}:root{--ldg-bnb-background:%23ffffff;--ldg-bnb-border-radius:0.42em;--ldg-bnb-box-shadow:none;--ldg-bnb-padding:14px;--ldg-bnb-input-background:%23ffffff;--ldg-bnb-button-border-radius:3.58em;--ldg-bnb-color-primary:%232aacb8;--ldg-bnb-color-primary-lighter:%237fd4dc;--ldg-bnb-color-primary-darker:%231a8a94;--ldg-bnb-color-primary-contrast:%23ffffff;--ldg-component-calendar-cell-selection-bg-color:%232aacb8;--ldg-component-calendar-cell-selection-color:%23ffffff;--ldg-component-calendar-cell-selected-bg-color:%23e0f5f7;--ldg-component-calendar-cell-selected-color:%231c2b2d;--ldg-bnb-font-family:inherit;}%23lodgify-book-now-box{width:100%;}</style></head><body><div id='lodgify-book-now-box' data-rental-id='806721' data-website-id='655689' data-slug='casa-del-mar-850d64' data-language-code='en' data-new-tab='true' data-version='stable' data-has-guests-breakdown data-check-in-label='Check-in' data-check-out-label='Check-out' data-guests-label='Guests' data-guests-singular-label='{{NumberOfGuests}} guest' data-guests-plural-label='{{NumberOfGuests}} guests' data-total-price-label='Total price:' data-select-dates-to-see-price-label='Select dates to see total price' data-minimum-price-per-night-first-label='From' data-minimum-price-per-night-second-label='per night' data-book-button-label='Book Now' data-guests-breakdown-label='Guests' data-adults-label='{&quot;one&quot;:&quot;adult&quot;,&quot;other&quot;:&quot;adults&quot;}' data-adults-description='Ages {minAge} or above' data-children-label='{&quot;one&quot;:&quot;child&quot;,&quot;other&quot;:&quot;children&quot;}' data-children-description='Ages {minAge}-{maxAge}' data-children-not-allowed-label='Not suitable for children' data-infants-label='{&quot;one&quot;:&quot;infant&quot;,&quot;other&quot;:&quot;infants&quot;}' data-infants-description='Under {maxAge}' data-infants-not-allowed-label='Not suitable for infants' data-pets-label='{&quot;one&quot;:&quot;pet&quot;,&quot;other&quot;:&quot;pets&quot;}' data-pets-not-allowed-label='Not allowed' data-done-label='Done'></div><script src='https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js'><\/script></body></html>"></iframe>
         </div>
+        <button class="btn-availability btn-availability-mar" onclick="showWidget('mar')">
+          Check Availability
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
       </div>
       <div class="villa-divider"></div>
     </div>
@@ -740,9 +756,13 @@
       </div>
       <div class="villa-booking" style="background:var(--sol-light);">
         <div class="villa-booking-label sol">Reserve Casa del Sol</div>
-        <div class="ldg-sol-wrap">
+        <div class="ldg-sol-wrap" id="sol-widget-wrap" style="display:none;">
           <iframe id="iframe-sol" scrolling="no" style="width:100%;border:none;display:block;" src="data:text/html;charset=utf-8,<!DOCTYPE html><html><head><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:inherit;background:transparent;}:root{--ldg-bnb-background:%23ffffff;--ldg-bnb-border-radius:0.42em;--ldg-bnb-box-shadow:none;--ldg-bnb-padding:14px;--ldg-bnb-input-background:%23ffffff;--ldg-bnb-button-border-radius:3.58em;--ldg-bnb-color-primary:%23e8a430;--ldg-bnb-color-primary-lighter:%23f5cc80;--ldg-bnb-color-primary-darker:%23b07818;--ldg-bnb-color-primary-contrast:%23ffffff;--ldg-component-calendar-cell-selection-bg-color:%23e8a430;--ldg-component-calendar-cell-selection-color:%23ffffff;--ldg-component-calendar-cell-selected-bg-color:%23fdf3e0;--ldg-component-calendar-cell-selected-color:%231c2b2d;--ldg-bnb-font-family:inherit;}%23lodgify-book-now-box{width:100%;}</style></head><body><div id='lodgify-book-now-box' data-rental-id='806720' data-website-id='655689' data-slug='casa-del-mar-850d64' data-language-code='en' data-new-tab='true' data-version='stable' data-has-guests-breakdown data-check-in-label='Check-in' data-check-out-label='Check-out' data-guests-label='Guests' data-guests-singular-label='{{NumberOfGuests}} guest' data-guests-plural-label='{{NumberOfGuests}} guests' data-total-price-label='Total price:' data-select-dates-to-see-price-label='Select dates to see total price' data-minimum-price-per-night-first-label='From' data-minimum-price-per-night-second-label='per night' data-book-button-label='Book Now' data-guests-breakdown-label='Guests' data-adults-label='{&quot;one&quot;:&quot;adult&quot;,&quot;other&quot;:&quot;adults&quot;}' data-adults-description='Ages {minAge} or above' data-children-label='{&quot;one&quot;:&quot;child&quot;,&quot;other&quot;:&quot;children&quot;}' data-children-description='Ages {minAge}-{maxAge}' data-children-not-allowed-label='Not suitable for children' data-infants-label='{&quot;one&quot;:&quot;infant&quot;,&quot;other&quot;:&quot;infants&quot;}' data-infants-description='Under {maxAge}' data-infants-not-allowed-label='Not suitable for infants' data-pets-label='{&quot;one&quot;:&quot;pet&quot;,&quot;other&quot;:&quot;pets&quot;}' data-pets-not-allowed-label='Not allowed' data-done-label='Done'></div><script src='https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js'><\/script></body></html>"></iframe>
         </div>
+        <button class="btn-availability btn-availability-sol" onclick="showWidget('sol')">
+          Check Availability
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -865,26 +885,28 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
-</script>
-<script>
-  function resizeLodgifyIframe(iframe) {
-    try {
-      var resize = function() {
+
+function showWidget(villa) {
+  var wrap = document.getElementById(villa + '-widget-wrap');
+  var btn = document.querySelector('.btn-availability-' + villa);
+  if (!wrap || !btn) return;
+  btn.style.display = 'none';
+  wrap.style.display = 'block';
+  var iframe = document.getElementById('iframe-' + villa);
+  if (iframe) {
+    var resize = function() {
+      try {
         var h = iframe.contentDocument && iframe.contentDocument.body
-          ? iframe.contentDocument.body.scrollHeight
-          : 400;
-        iframe.style.height = (h + 20) + 'px';
-      };
-      iframe.addEventListener('load', function() {
-        resize();
-        setInterval(resize, 600);
-      });
-    } catch(e) {}
+          ? iframe.contentDocument.body.scrollHeight : 420;
+        if (h > 50) iframe.style.height = (h + 20) + 'px';
+      } catch(e) {}
+    };
+    iframe.addEventListener('load', function() {
+      resize();
+      setInterval(resize, 600);
+    });
   }
-  var iMar = document.getElementById('iframe-mar');
-  var iSol = document.getElementById('iframe-sol');
-  if (iMar) resizeLodgifyIframe(iMar);
-  if (iSol) resizeLodgifyIframe(iSol);
+}
 </script>
 </body>
 </html>
