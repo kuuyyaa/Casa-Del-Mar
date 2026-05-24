@@ -5,6 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa del Mar &amp; Casa del Sol | Sifa, Oman</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
+<style>
+  /* Casa del Mar widget — teal theme */
+  #ldg-mar {
+    --ldg-bnb-background: #ffffff;
+    --ldg-bnb-border-radius: 0.42em;
+    --ldg-bnb-box-shadow: none;
+    --ldg-bnb-padding: 14px;
+    --ldg-bnb-input-background: #ffffff;
+    --ldg-bnb-button-border-radius: 3.58em;
+    --ldg-bnb-color-primary: #2aacb8;
+    --ldg-bnb-color-primary-lighter: #7fd4dc;
+    --ldg-bnb-color-primary-darker: #1a8a94;
+    --ldg-bnb-color-primary-contrast: #ffffff;
+    --ldg-component-calendar-cell-selection-bg-color: #2aacb8;
+    --ldg-component-calendar-cell-selection-color: #ffffff;
+    --ldg-component-calendar-cell-selected-bg-color: #e0f5f7;
+    --ldg-component-calendar-cell-selected-color: #1c2b2d;
+    --ldg-bnb-font-family: inherit;
+    width: 100%;
+  }
+  /* Casa del Sol widget — amber/gold theme */
+  #ldg-sol {
+    --ldg-bnb-background: #ffffff;
+    --ldg-bnb-border-radius: 0.42em;
+    --ldg-bnb-box-shadow: none;
+    --ldg-bnb-padding: 14px;
+    --ldg-bnb-input-background: #ffffff;
+    --ldg-bnb-button-border-radius: 3.58em;
+    --ldg-bnb-color-primary: #e8a430;
+    --ldg-bnb-color-primary-lighter: #f5cc80;
+    --ldg-bnb-color-primary-darker: #b07818;
+    --ldg-bnb-color-primary-contrast: #ffffff;
+    --ldg-component-calendar-cell-selection-bg-color: #e8a430;
+    --ldg-component-calendar-cell-selection-color: #ffffff;
+    --ldg-component-calendar-cell-selected-bg-color: #fdf3e0;
+    --ldg-component-calendar-cell-selected-color: #1c2b2d;
+    --ldg-bnb-font-family: inherit;
+    width: 100%;
+  }
+</style>
 <style>
   :root {
     --cream:       #faf7f2;
@@ -90,6 +131,8 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--teal); }
+  .nav-whatsapp { color: #25D366 !important; }
+  .nav-whatsapp:hover { color: #128C7E !important; }
   .nav-book {
     background: var(--teal); color: var(--white);
     padding: 0.65rem 1.8rem;
@@ -99,6 +142,25 @@
     transition: background 0.2s;
   }
   .nav-book:hover { background: var(--teal-deep); }
+  .nav-ctas { display: flex; gap: 0.6rem; }
+  .nav-book-mar {
+    background: var(--teal); color: var(--white);
+    padding: 0.55rem 1.2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500; border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-book-mar:hover { background: var(--teal-deep); }
+  .nav-book-sol {
+    background: var(--sol); color: var(--white);
+    padding: 0.55rem 1.2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500; border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-book-sol:hover { background: #c98820; }
 
   /* ── HERO ── */
   #hero {
@@ -119,11 +181,11 @@
   .hero-bg::after {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(250,247,242,0.92) 36%, rgba(250,247,242,0.3) 72%, rgba(250,247,242,0.05) 100%);
+    background: linear-gradient(to right, rgba(250,247,242,0.92) 47.5%, rgba(250,247,242,0.3) 72%, rgba(250,247,242,0.05) 100%);
   }
   .hero-content {
     position: relative; z-index: 2;
-    padding: 0 5rem; max-width: 640px;
+    padding: 0 5rem; max-width: 860px;
     animation: fadeUp 1s ease-out 0.2s both;
   }
   @keyframes fadeUp {
@@ -175,6 +237,17 @@
     display: inline-flex; align-items: center; gap: 0.6rem;
   }
   .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-contact {
+    background: var(--white); color: var(--text);
+    padding: 0.9rem 2.2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; border-radius: 2px;
+    border: 1px solid var(--border-sand);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    box-shadow: 0 2px 12px rgba(28,43,45,0.08);
+  }
+  .btn-contact:hover { border-color: #25D366; box-shadow: 0 4px 16px rgba(37,211,102,0.15); }
 
   .hero-badges {
     position: absolute; bottom: 3.5rem; right: 5rem;
@@ -420,6 +493,18 @@
   }
   .widget-placeholder strong { display: block; color: var(--teal); font-size: 0.86rem; margin-bottom: 0.4rem; }
 
+  .villa-booking {
+    border-top: 1px solid var(--border-sand);
+    padding: 2rem 2.5rem 2.5rem;
+    background: var(--cream);
+  }
+  .villa-booking-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem; font-weight: 500;
+  }
+  .villa-booking-label.mar { color: var(--teal-deep); }
+  .villa-booking-label.sol { color: #9a6300; }
+
   /* ── LOCATION ── */
   #location { background: var(--white); padding: 8rem 5rem; }
   .location-layout {
@@ -439,7 +524,7 @@
   /* ── RULES ── */
   #rules { background: var(--cream); padding: 8rem 5rem; }
   .rules-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem;
   }
   .rule-card {
     background: var(--white); border: 1px solid var(--border-sand);
@@ -477,12 +562,26 @@
   .footer-copy { font-size: 0.68rem; color: rgba(250,247,242,0.28); }
   .footer-credit { font-size: 0.68rem; color: rgba(250,247,242,0.22); }
 
+  .hero-search-wrap {
+    margin-top: 2rem;
+    max-width: 760px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 8px 40px rgba(28,43,45,0.10);
+  }
+  .hero-search-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.6rem; display: block;
+  }
+
   /* ── MOBILE ── */
   @media (max-width: 960px) {
     nav, nav.scrolled { padding: 1.1rem 1.5rem; }
     .nav-links { display: none; }
     #about, .book-layout, .location-layout { grid-template-columns: 1fr; gap: 3rem; }
-    #features, #villas, #gallery, #amenities, #rules, #book, #location, footer { padding: 5rem 1.5rem; }
+    #features, #villas, #gallery, #amenities, #rules, #location, footer { padding: 5rem 1.5rem; }
     #features { padding: 2rem 1.5rem; }
     .hero-content { padding: 0 1.5rem; }
     .hero-badges { right: 1.5rem; bottom: 2rem; flex-direction: column; }
@@ -511,16 +610,18 @@
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <span class="nav-logo-main">Casa del Mar &amp; Casa del Sol</span>
-    <span class="nav-logo-sub">Sifa · Sultanate of Oman</span>
+    <span class="nav-logo-main">Casa del Mar</span>
+    <span class="nav-logo-main">Casa del Sol</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#villas">The Villas</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#amenities">Amenities</a></li>
     <li><a href="#location">Location</a></li>
   </ul>
-  <a class="nav-book" href="#book">Reserve Now</a>
+  <div class="nav-ctas">
+    <a class="nav-book nav-book-mar" href="#mar">Casa del Mar</a>
+    <a class="nav-book nav-book-sol" href="#sol">Casa del Sol</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -535,11 +636,18 @@
     <div class="hero-divider"></div>
     <p class="hero-sub">Two private villas on the white sand shores of Sifa. One faces the sea at dawn. The other catches the last light of the day. Both available to you.</p>
     <div class="hero-ctas">
-      <a class="btn-primary" href="#book">
-        Check Availability
+      <a class="btn-primary" href="#mar">
+        Book Casa del Mar
         <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
-      <a class="btn-ghost" href="#villas">Discover the Villas</a>
+      <a class="btn-primary" href="#sol" style="background:var(--sol);">
+        Book Casa del Sol
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a class="btn-contact" href="https://wa.me/96812345678?text=Hi%2C%20I'd%20like%20to%20enquire%20about%20Casa%20del%20Mar%20or%20Casa%20del%20Sol" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Contact Us
+      </a>
     </div>
   </div>
   <!--<div class="hero-badges">
@@ -583,7 +691,7 @@
 
   <div class="villa-cards">
     <!-- CASA DEL MAR -->
-    <div class="villa-card">
+    <div class="villa-card" id="mar">
       <div class="villa-img-wrap" style="height:420px;">
         <div class="img-placeholder"><span>🌊</span>Casa del Mar photo</div>
       </div>
@@ -601,13 +709,47 @@
           <span class="vf-tag">En-suite bathrooms</span>
           <span class="vf-tag">Full kitchen</span>
         </div>
-        <a class="btn-primary" href="#book" style="width:100%;justify-content:center;">Reserve Casa del Mar</a>
+      </div>
+      <div class="villa-booking">
+        <div class="villa-booking-label mar">Reserve Casa del Mar</div>
+        <div
+          id="ldg-mar"
+          data-rental-id="806721"
+          data-website-id="655689"
+          data-slug="casa-del-mar-850d64"
+          data-language-code="en"
+          data-new-tab="true"
+          data-version="stable"
+          data-has-guests-breakdown
+          data-check-in-label='Check-in'
+          data-check-out-label='Check-out'
+          data-guests-label='Guests'
+          data-guests-singular-label='{{NumberOfGuests}} guest'
+          data-guests-plural-label='{{NumberOfGuests}} guests'
+          data-total-price-label='Total price:'
+          data-select-dates-to-see-price-label='Select dates to see total price'
+          data-minimum-price-per-night-first-label='From'
+          data-minimum-price-per-night-second-label='per night'
+          data-book-button-label='Book Now'
+          data-guests-breakdown-label='Guests'
+          data-adults-label='{"one":"adult","other":"adults"}'
+          data-adults-description='Ages {minAge} or above'
+          data-children-label='{"one":"child","other":"children"}'
+          data-children-description='Ages {minAge}-{maxAge}'
+          data-children-not-allowed-label='Not suitable for children'
+          data-infants-label='{"one":"infant","other":"infants"}'
+          data-infants-description='Under {maxAge}'
+          data-infants-not-allowed-label='Not suitable for infants'
+          data-pets-label='{"one":"pet","other":"pets"}'
+          data-pets-not-allowed-label='Not allowed'
+          data-done-label='Done'
+        ></div>
       </div>
       <div class="villa-divider"></div>
     </div>
 
     <!-- CASA DEL SOL -->
-    <div class="villa-card">
+    <div class="villa-card" id="sol">
       <div class="villa-img-wrap" style="height:420px;">
         <div class="img-placeholder" style="background-color:#fdf3e0;background-image:repeating-linear-gradient(-45deg,rgba(232,164,48,0.13) 0px,rgba(232,164,48,0.13) 10px,transparent 10px,transparent 24px);color:#9a6300;"><span>☀️</span>Casa del Sol photo</div>
       </div>
@@ -625,7 +767,41 @@
           <span class="vf-tag">En-suite bathrooms</span>
           <span class="vf-tag">Full kitchen</span>
         </div>
-        <a class="btn-primary" href="#book" style="width:100%;justify-content:center;background:var(--sol);">Reserve Casa del Sol</a>
+      </div>
+      <div class="villa-booking" style="background:var(--sol-light);">
+        <div class="villa-booking-label sol">Reserve Casa del Sol</div>
+        <div
+          id="ldg-sol"
+          data-rental-id="806720"
+          data-website-id="655689"
+          data-slug="casa-del-mar-850d64"
+          data-language-code="en"
+          data-new-tab="true"
+          data-version="stable"
+          data-has-guests-breakdown
+          data-check-in-label='Check-in'
+          data-check-out-label='Check-out'
+          data-guests-label='Guests'
+          data-guests-singular-label='{{NumberOfGuests}} guest'
+          data-guests-plural-label='{{NumberOfGuests}} guests'
+          data-total-price-label='Total price:'
+          data-select-dates-to-see-price-label='Select dates to see total price'
+          data-minimum-price-per-night-first-label='From'
+          data-minimum-price-per-night-second-label='per night'
+          data-book-button-label='Book Now'
+          data-guests-breakdown-label='Guests'
+          data-adults-label='{"one":"adult","other":"adults"}'
+          data-adults-description='Ages {minAge} or above'
+          data-children-label='{"one":"child","other":"children"}'
+          data-children-description='Ages {minAge}-{maxAge}'
+          data-children-not-allowed-label='Not suitable for children'
+          data-infants-label='{"one":"infant","other":"infants"}'
+          data-infants-description='Under {maxAge}'
+          data-infants-not-allowed-label='Not suitable for infants'
+          data-pets-label='{"one":"pet","other":"pets"}'
+          data-pets-not-allowed-label='Not allowed'
+          data-done-label='Done'
+        ></div>
       </div>
     </div>
   </div>
@@ -640,7 +816,7 @@
       <p class="eyebrow">Gallery</p>
       <h2 class="section-title">Sifa through<br><em>the seasons</em></h2>
     </div>
-    <a class="gallery-link" href="#book">Reserve your stay →</a>
+    <a class="gallery-link" href="#villas">Reserve your stay →</a>
   </div>
   <div class="gallery-grid">
     <div class="gi g1"><div class="img-placeholder"><span>🏖️</span>Beach view</div></div>
@@ -683,41 +859,6 @@
   </div>
 </section>
 
-<!-- BOOKING -->
-<section id="book">
-  <p class="eyebrow">Reservations</p>
-  <h2 class="section-title">Book your reservations<br><em>directly</em></h2>
-  <div class="book-layout">
-    <div class="book-info">
-      <p class="body-text">Reserve Casa del Mar or Casa del Sol directly through this page. Select your dates in the booking widget and follow the steps to confirm your stay.</p>
-      <p class="body-text">You'll receive payment details by email after booking. Your dates are held for 48 hours while you complete payment.</p>
-      <p class="body-text" style="margin-top:1.2rem;">Multiple payment methods are accepted, including bank transfers.</p>
-      <a class="whatsapp-btn" href="https://wa.me/96812345678?text=Hi%2C%20I'd%20like%20to%20enquire%20about%20Casa%20del%20Mar%20or%20Casa%20del%20Sol%20in%20Sifa" target="_blank" style="margin-top:1.8rem;">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enquire via WhatsApp
-      </a>
-    </div>
-
-    <div class="lodgify-container">
-      <div class="lodgify-header">
-        <div class="lodgify-title">Select your villa &amp; dates</div>
-        <div class="lodgify-sub">Live availability, synced with Airbnb &amp; Booking.com</div>
-      </div>
-      <!--
-        ══════════════════════════════════════════════
-        PASTE YOUR LODGIFY WIDGET CODE HERE
-        ══════════════════════════════════════════════
-        Lodgify → Website → Booking Widget → Copy Code
-        Replace the .widget-placeholder div below.
-        ══════════════════════════════════════════════
-      -->
-      <div class="widget-placeholder">
-        <strong>Lodgify Booking Widget</strong>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- LOCATION -->
 <section id="location">
   <p class="eyebrow">Getting Here</p>
@@ -750,10 +891,8 @@
   <div class="rules-grid">
     <div class="rule-card"><div class="rule-icon">🕒</div><div><div class="rule-title">Check-in</div><div class="rule-val">From 3:00 PM</div><div class="rule-note">Early check-in on request, subject to availability</div></div></div>
     <div class="rule-card"><div class="rule-icon">🕙</div><div><div class="rule-title">Check-out</div><div class="rule-val">By 11:00 AM</div><div class="rule-note">Late check-out may be arranged in advance</div></div></div>
-    <div class="rule-card"><div class="rule-icon">🌙</div><div><div class="rule-title">Minimum Stay</div><div class="rule-val">2 Nights</div><div class="rule-note">Weekend bookings preferred</div></div></div>
     <div class="rule-card"><div class="rule-icon">🚭</div><div><div class="rule-title">Smoking</div><div class="rule-val">Outdoors only</div><div class="rule-note">Designated terrace areas available</div></div></div>
-    <div class="rule-card"><div class="rule-icon">🐾</div><div><div class="rule-title">Pets</div><div class="rule-val">On request</div><div class="rule-note">Please contact us before bringing animals</div></div></div>
-    <div class="rule-card"><div class="rule-icon">💳</div><div><div class="rule-title">Security Deposit</div><div class="rule-val">OMR 50</div><div class="rule-note">Refundable within 3 days of checkout</div></div></div>
+    <div class="rule-card"><div class="rule-icon">🐾</div><div><div class="rule-title">Pets</div><div class="rule-val">Not allowed</div><div class="rule-note">We are unable to accommodate pets at either villa</div></div></div>
   </div>
 </section>
 
@@ -768,7 +907,8 @@
       <li><a href="#villas">The Villas</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#amenities">Amenities</a></li>
-      <li><a href="#book">Book</a></li>
+      <li><a href="#mar">Casa del Mar</a></li>
+      <li><a href="#sol">Casa del Sol</a></li>
       <li><a href="#location">Location</a></li>
       <li><a href="https://wa.me/96812345678" target="_blank">WhatsApp</a></li>
     </ul>
