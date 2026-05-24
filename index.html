@@ -419,9 +419,19 @@
   }
   .pool-bg {
     position: absolute; inset: 0;
-    background:
-      linear-gradient(to right, rgba(250,247,242,0) 35%, rgba(250,247,242,0.96) 68%, rgba(250,247,242,1) 100%),
-      url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&q=85') center/cover no-repeat;
+    background-color: #ddf0f2;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(42,172,184,0.10) 0px,
+      rgba(42,172,184,0.10) 10px,
+      transparent 10px,
+      transparent 24px
+    );
+  }
+  .pool-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(250,247,242,0) 35%, rgba(250,247,242,0.96) 68%, rgba(250,247,242,1) 100%);
   }
   .pool-content {
     position: relative; z-index: 2;
@@ -604,10 +614,8 @@
     .amenities-grid { grid-template-columns: 1fr 1fr; }
     .rules-grid { grid-template-columns: 1fr 1fr; }
     .pool-content { padding: 0 1.5rem; max-width: 100%; }
-    .pool-bg {
-      background:
-        linear-gradient(to bottom, rgba(250,247,242,0) 30%, rgba(250,247,242,0.97) 70%),
-        url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80') center/cover no-repeat;
+    .pool-bg::after {
+      background: linear-gradient(to bottom, rgba(250,247,242,0) 30%, rgba(250,247,242,0.97) 70%);
     }
     #pool { height: auto; padding: 4rem 0 0; align-items: flex-end; }
     .pool-content { padding: 3rem 1.5rem; max-width: 100%; }
@@ -826,10 +834,9 @@
   <h2 class="section-title">Sifa, <em>Oman</em></h2>
   <div class="location-layout">
     <div class="map-frame">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57946.01!2d58.2!3d23.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8de04b43a3bed5%3A0x7be11d2ee14a0ad1!2sSifa%2C%20Oman!5e0!3m2!1sen!2som!4v1"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sifa location map">
-      </iframe>
+      <div class="img-placeholder" style="height:100%;border-radius:4px;background-color:#e8f4f5;background-image:repeating-linear-gradient(-45deg,rgba(42,172,184,0.10) 0px,rgba(42,172,184,0.10) 10px,transparent 10px,transparent 24px);">
+        <span>📍</span>Map — Sifa, Oman
+      </div>
     </div>
     <div class="location-details">
       <p class="body-text">Sifa sits on the Al Batinah South coast, roughly 45 minutes from Muscat along the scenic coastal highway. The drive passes through dramatic cliffs and hidden coves. It's part of the experience.</p>
@@ -887,13 +894,31 @@ window.addEventListener('scroll', () => {
 });
 
 function showWidget(villa) {
+  var other = villa === 'mar' ? 'sol' : 'mar';
+
   var wrap = document.getElementById(villa + '-widget-wrap');
   var btn = document.querySelector('.btn-availability-' + villa);
+  var otherWrap = document.getElementById(other + '-widget-wrap');
+  var otherBtn = document.querySelector('.btn-availability-' + other);
+
   if (!wrap || !btn) return;
+
+  // Close the other widget and restore its button
+  if (otherWrap) otherWrap.style.display = 'none';
+  if (otherBtn) {
+    otherBtn.style.display = 'flex';
+    otherBtn.disabled = false;
+    otherBtn.style.opacity = '1';
+    otherBtn.style.cursor = 'pointer';
+  }
+
+  // Open this widget, hide its button
   btn.style.display = 'none';
   wrap.style.display = 'block';
+
   var iframe = document.getElementById('iframe-' + villa);
-  if (iframe) {
+  if (iframe && !iframe.dataset.resizing) {
+    iframe.dataset.resizing = 'true';
     var resize = function() {
       try {
         var h = iframe.contentDocument && iframe.contentDocument.body
